@@ -41,7 +41,7 @@ class Duration
   int64_t mNSec;
 
 public:
-  Duration();
+  Duration() = default;
   Duration( const double time );
   Duration( const int64_t sec,
             const int64_t nsec );
