@@ -1,8 +1,9 @@
 #include <TimeUtils/Timer.hpp>
 
 
-Timer::Timer( const Duration& duration )
-  : mCounting(false)
+Timer::Timer( const Duration& duration,
+              bool start )
+  : mCounting(start)
   , mDuration(duration)
   , mRemainingTime(duration)
 {}
@@ -33,23 +34,44 @@ Timer::stop()
   mCounting = false;
 }
 
-void
-Timer::update( const Duration& deltaTime )
+Duration
+Timer::update( const Duration& dt )
 {
   if ( isReady() )
-    return;
+    return mRemainingTime;
 
-  if ( mRemainingTime > Duration(0.0) )
-    mRemainingTime -= deltaTime;
-  else
+  if ( mRemainingTime > Duration() )
   {
-    mRemainingTime = Duration(0.0);
-    stop();
+    mRemainingTime -= dt;
+    return mRemainingTime;
   }
+
+  mRemainingTime = Duration();
+  stop();
+
+  return mRemainingTime;
+}
+
+Duration
+Timer::duration() const
+{
+  return mDuration;
+}
+
+Duration
+Timer::remaining() const
+{
+  return mRemainingTime;
+}
+
+Duration
+Timer::elapsed() const
+{
+  return mDuration - mRemainingTime;
 }
 
 bool
 Timer::isReady() const
 {
-  return mRemainingTime <= Duration(0.0);
+  return mRemainingTime <= Duration();
 }

@@ -14,13 +14,17 @@ class Timer
   Duration mRemainingTime;
 
 public:
-  Timer( const Duration& duration );
+  Timer( const Duration&, bool start = false );
   void start();
   void start( const Duration& newDuration );
   void restart();
   void stop();
 
-  void update( const Duration& deltaTime );
+  Duration update( const Duration& dt );
+
+  Duration duration() const;
+  Duration remaining() const;
+  Duration elapsed() const;
 
   bool isReady() const;
 };
