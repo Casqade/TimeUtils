@@ -1,6 +1,9 @@
 #include <TimeUtils/Timer.hpp>
 
 
+namespace TimeUtils
+{
+
 Timer::Timer( const Duration& duration,
               bool start )
   : mCounting(start)
@@ -75,3 +78,5 @@ Timer::isReady() const
 {
   return mRemainingTime <= Duration();
 }
+
+} // namespace TimeUtils

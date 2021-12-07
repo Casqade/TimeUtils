@@ -3,6 +3,8 @@
 
 #include <TimeUtils/Duration.hpp>
 
+namespace TimeUtils
+{
 
 class Timer
 {
@@ -29,5 +31,6 @@ public:
   bool isReady() const;
 };
 
+} // namespace TimeUtils
 
 #endif
