@@ -1,5 +1,4 @@
-#ifndef TIME_UTILS_DURATION_HPP
-#define TIME_UTILS_DURATION_HPP
+#pragma once
 
 #include <cstdint>
 
@@ -75,6 +74,3 @@ public:
 };
 
 } // namespace TimeUtils
-
-
-#endif

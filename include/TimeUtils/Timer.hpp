@@ -1,5 +1,4 @@
-#ifndef TIME_UTILS_TIMER_HPP
-#define TIME_UTILS_TIMER_HPP
+#pragma once
 
 #include <TimeUtils/Duration.hpp>
 
@@ -32,5 +31,3 @@ public:
 };
 
 } // namespace TimeUtils
-
-#endif
