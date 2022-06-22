@@ -2,13 +2,6 @@
 
 #include <cmath>
 
-#define TIME_UTILS_TEST
-#if defined TIME_UTILS_TEST
-  #include <vector>
-  #include <chrono>
-  #include <thread>
-#endif
-
 
 namespace TimeUtils
 {
