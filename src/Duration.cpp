@@ -1,7 +1,6 @@
 #include <TimeUtils/Duration.hpp>
 
 #include <cmath>
-//#include <unistd.h> // usleep
 
 #define TIME_UTILS_TEST
 #if defined TIME_UTILS_TEST

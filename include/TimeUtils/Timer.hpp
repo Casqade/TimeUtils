@@ -2,10 +2,11 @@
 
 #include <TimeUtils/Duration.hpp>
 
+
 namespace TimeUtils
 {
 
-class Timer
+class TIMEUTILS_EXPORT Timer
 {
   using Duration = TimeUtils::Duration;
 

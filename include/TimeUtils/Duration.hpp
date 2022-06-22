@@ -1,5 +1,7 @@
 #pragma once
 
+#include <TimeUtils/TimeUtils_export.hpp>
+
 #include <cstdint>
 
 #if defined(__APPLE__) || defined(__MACH__)
@@ -30,11 +32,11 @@ namespace TimeUtils
 
 class Duration;
 
-Duration Now();
-bool Sleep( const Duration& duration );
-bool SleepUntil( const Duration& timeStamp );
+TIMEUTILS_EXPORT Duration Now();
+TIMEUTILS_EXPORT bool Sleep( const Duration& duration );
+TIMEUTILS_EXPORT bool SleepUntil( const Duration& timeStamp );
 
-class Duration
+class TIMEUTILS_EXPORT Duration
 {
   int64_t mSec;
   int64_t mNSec;
