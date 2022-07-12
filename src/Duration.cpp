@@ -59,13 +59,7 @@ SleepUntil( const Duration& timestamp )
 Duration::Duration( const double time )
   : mSec(static_cast <int64_t> ( std::trunc(time) ))
   , mNSec(static_cast <int64_t> ( time * NSEC_IN_SEC ) % NSEC_IN_SEC)
-{
-  mSec
-    = static_cast <int64_t> ( std::trunc(time) );
-
-  mNSec
-    = static_cast <int64_t> ( time * NSEC_IN_SEC ) % NSEC_IN_SEC;
-}
+{}
 
 Duration::Duration( const int64_t sec,
                     const int64_t nsec )

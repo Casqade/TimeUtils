@@ -38,8 +38,8 @@ TIMEUTILS_EXPORT bool SleepUntil( const Duration& timeStamp );
 
 class TIMEUTILS_EXPORT Duration
 {
-  int64_t mSec;
-  int64_t mNSec;
+  int64_t mSec {};
+  int64_t mNSec {};
 
 public:
   Duration() = default;
