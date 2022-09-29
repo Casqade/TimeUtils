@@ -125,14 +125,18 @@ Duration::operator double () const
     mSec + mNSec / static_cast <double> ( NSEC_IN_SEC );
 }
 
+Duration::operator float () const
+{
+  return
+    mSec + mNSec / static_cast <double> ( NSEC_IN_SEC );
+}
+
 bool
 Duration::operator == ( const Duration& other ) const
 {
   return
-  {
     this->mSec == other.mSec &&
-    this->mNSec == other.mNSec
-  };
+    this->mNSec == other.mNSec;
 }
 
 bool

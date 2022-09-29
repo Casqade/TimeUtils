@@ -60,6 +60,7 @@ public:
 
 #endif
   explicit operator double () const;
+  explicit operator float () const;
 
   bool operator == ( const Duration& other) const;
   bool operator != ( const Duration& other) const;
