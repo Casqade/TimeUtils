@@ -196,7 +196,7 @@ Duration::operator + ( const Duration& other ) const
   result.mSec = this->mSec + other.mSec;
   result.mNSec = this->mNSec + other.mNSec;
 
-  if ( result.mNSec >= NSEC_IN_SEC )
+  while ( result.mNSec >= NSEC_IN_SEC )
   {
     ++result.mSec;
     result.mNSec -= NSEC_IN_SEC;
@@ -213,7 +213,7 @@ Duration::operator - ( const Duration& other ) const
   result.mSec = this->mSec - other.mSec;
   result.mNSec = this->mNSec - other.mNSec;
 
-  if ( result.mNSec < 0 )
+  while ( result.mNSec < 0 )
   {
     --result.mSec;
     result.mNSec += NSEC_IN_SEC;
