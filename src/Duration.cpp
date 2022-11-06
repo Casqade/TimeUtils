@@ -55,6 +55,22 @@ SleepUntil( const Duration& timestamp )
   return true;
 }
 
+void
+TimePeriodInit()
+{
+#if defined TIME_UTILS_WIN
+  timeBeginPeriod(1);
+#endif
+}
+
+void
+TimePeriodDeinit()
+{
+#if defined TIME_UTILS_WIN
+  timeEndPeriod(1);
+#endif
+}
+
 
 Duration::Duration( const double time )
   : mSec(static_cast <int64_t> ( std::trunc(time) ))

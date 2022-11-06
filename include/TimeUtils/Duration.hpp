@@ -36,6 +36,9 @@ TIMEUTILS_EXPORT Duration Now();
 TIMEUTILS_EXPORT bool Sleep( const Duration& duration );
 TIMEUTILS_EXPORT bool SleepUntil( const Duration& timeStamp );
 
+TIMEUTILS_EXPORT void TimePeriodInit();
+TIMEUTILS_EXPORT void TimePeriodDeinit();
+
 class TIMEUTILS_EXPORT Duration
 {
   int64_t mSec {};
