@@ -8,6 +8,10 @@
   static_assert ( true, "TimeUtils is not compatible with OS X" );
 
 #elif defined(_WIN32)
+  #if !defined(NOMINMAX)
+    #define NOMINMAX
+  #endif
+
   #include <windows.h>
 
   #ifndef TIME_UTILS_WIN
