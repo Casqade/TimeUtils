@@ -4,8 +4,9 @@
 namespace TimeUtils
 {
 
-Timer::Timer( const Duration& duration,
-              bool start )
+Timer::Timer(
+  const Duration& duration,
+  bool start )
   : mCounting(start)
   , mDuration(duration)
   , mRemainingTime(duration)
@@ -18,7 +19,8 @@ Timer::start()
 }
 
 void
-Timer::start( const Duration& newDuration )
+Timer::start(
+  const Duration& newDuration )
 {
   mDuration = mRemainingTime = newDuration;
 
@@ -38,9 +40,10 @@ Timer::stop()
 }
 
 Duration
-Timer::update( const Duration& dt )
+Timer::update(
+  const Duration& dt )
 {
-  if ( isReady() )
+  if ( isReady() == true )
     return mRemainingTime;
 
   if ( mRemainingTime > Duration() )

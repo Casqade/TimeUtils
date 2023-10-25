@@ -4,10 +4,7 @@
 
 #include <cstdint>
 
-#if defined(__APPLE__) || defined(__MACH__)
-  static_assert ( true, "TimeUtils is not compatible with OS X" );
-
-#elif defined(_WIN32)
+#if defined(_WIN32)
   #if !defined(NOMINMAX)
     #define NOMINMAX
   #endif
@@ -18,15 +15,19 @@
     #define TIME_UTILS_WIN
   #endif
 
-#elif defined(__linux__)
+#elif defined(__linux__) || defined(__APPLE__) || defined(__MACH__)
   #include <time.h>
+
+  #if !defined(__linux__) && !defined(CLOCK_MONOTONIC)
+    static_assert(false, "TimeUtils is not compatible with macOS releases older than Sierra 10.12");
+  #endif
 
   #ifndef TIME_UTILS_LIN
     #define TIME_UTILS_LIN
   #endif
 
 #else
-  static_assert ( true, "TimeUtils is not compatible with your OS" );
+  static_assert(false, "TimeUtils is not compatible with your systen");
 
 #endif
 

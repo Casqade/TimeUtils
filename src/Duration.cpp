@@ -25,7 +25,8 @@ Now()
 }
 
 bool
-Sleep( const Duration& duration )
+Sleep(
+  const Duration& duration )
 {
 #if defined TIME_UTILS_WIN
   const Duration timestamp = TimeUtils::Now() + duration;
@@ -40,7 +41,8 @@ Sleep( const Duration& duration )
 }
 
 bool
-SleepUntil( const Duration& timestamp )
+SleepUntil(
+  const Duration& timestamp )
 {
 #if defined TIME_UTILS_WIN
   while ( TimeUtils::Now() < timestamp )
@@ -72,13 +74,15 @@ TimePeriodDeinit()
 }
 
 
-Duration::Duration( const double time )
+Duration::Duration(
+  const double time )
   : mSec(static_cast <int64_t> ( std::trunc(time) ))
   , mNSec(static_cast <int64_t> ( time * NSEC_IN_SEC ) % NSEC_IN_SEC)
 {}
 
-Duration::Duration( const int64_t sec,
-                    const int64_t nsec )
+Duration::Duration(
+  const int64_t sec,
+  const int64_t nsec )
   : mSec(sec)
   , mNSec(nsec)
 {}
@@ -96,7 +100,8 @@ Duration::now()
 }
 
 #if defined (TIME_UTILS_WIN)
-Duration::Duration( const LARGE_INTEGER& time )
+Duration::Duration(
+  const LARGE_INTEGER& time )
 {
   LARGE_INTEGER perfFreq;
   QueryPerformanceFrequency( &perfFreq );
@@ -117,7 +122,8 @@ Duration::operator LARGE_INTEGER () const
 }
 
 #elif defined (TIME_UTILS_LIN)
-Duration::Duration( const struct timespec& time )
+Duration::Duration(
+  const struct timespec& time )
 {
   mSec = time.tv_sec;
   mNSec = time.tv_nsec;

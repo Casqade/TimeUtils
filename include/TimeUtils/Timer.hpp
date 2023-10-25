@@ -15,8 +15,10 @@ class TIMEUTILS_EXPORT Timer
   Duration mDuration;
   Duration mRemainingTime;
 
+
 public:
   Timer( const Duration&, bool start = false );
+
   void start();
   void start( const Duration& newDuration );
   void restart();
