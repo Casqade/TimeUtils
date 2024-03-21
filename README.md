@@ -1,6 +1,6 @@
 # TimeUtils
 
-[![Build status](https://github.com/casqade/TimeUtils/actions/workflows/cmake-multi-platform.yml/badge.svg)](https://github.com/casqade/casqadium/actions)
+[![Build status](https://github.com/casqade/TimeUtils/actions/workflows/cmake-multi-platform.yml/badge.svg)](https://github.com/casqade/TimeUtils/actions)
 
 Small timespec-like wrapper around system APIs for time-related stuff. 
 
