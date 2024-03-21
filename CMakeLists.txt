@@ -15,6 +15,10 @@ target_sources(${TARGET} PRIVATE
   include/${TARGET}/Timer.hpp
 )
 
+set_target_properties(${TARGET} PROPERTIES
+  CXX_STANDARD_REQUIRED ON
+  CXX_STANDARD 14
+)
 
 include(GenerateExportHeader)
 generate_export_header(${TARGET} EXPORT_FILE_NAME ${CMAKE_BINARY_DIR}/exports/${TARGET}/${TARGET}_export.hpp)
