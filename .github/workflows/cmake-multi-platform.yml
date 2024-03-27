@@ -162,7 +162,7 @@ jobs:
     - name: Install dependencies (macOS)
       if: matrix.config.os == 'macos-latest'
       run: |
-        brew install ninja
+        brew install gcc ninja
 
     - name: Configure CMake
       run: >
