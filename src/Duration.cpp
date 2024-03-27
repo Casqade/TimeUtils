@@ -19,7 +19,7 @@ Now()
   LARGE_INTEGER currentTime;
   QueryPerformanceCounter( &currentTime );
 
-#elif defined(TIME_UTILS_LIN) || defined(TIME_UTILS_MAC)
+#elif defined(TIME_UTILS_LIN)
   timespec currentTime;
   clock_gettime( CLOCK_MONOTONIC, &currentTime );
 
@@ -58,7 +58,7 @@ SleepUntil(
     ::Sleep(1);
 
 #elif defined(TIME_UTILS_MAC)
-  timespec timeToSleep = duration;
+  timespec timeToSleep = timestamp;
   return clock_nanosleep_abstime(&timeToSleep) == 0;
 
 #else
