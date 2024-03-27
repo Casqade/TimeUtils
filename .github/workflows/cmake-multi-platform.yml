@@ -135,8 +135,8 @@ jobs:
           }
         - {
             os: macos-latest,
-            cc: "gcc",
-            cxx: "g++"
+            cc: "gcc-13",
+            cxx: "g++-13"
           }
         - {
             os: macos-latest,
@@ -162,7 +162,7 @@ jobs:
     - name: Install dependencies (macOS)
       if: matrix.config.os == 'macos-latest'
       run: |
-        brew install gcc ninja
+        brew install ninja
 
     - name: Configure CMake
       run: >
