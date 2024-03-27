@@ -22,7 +22,7 @@ jobs:
       fail-fast: true
 
       matrix:
-        os: [ubuntu-latest, windows-latest]
+        os: [ubuntu-latest, windows-latest, macos-latest]
         compiler: [gcc, clang, cl]
         include:
           - os: windows-latest
@@ -42,19 +42,19 @@ jobs:
             c_compiler: clang
             cpp_compiler: clang++
 
-#          - os: macos-latest
-#            c_compiler: gcc
-#            cpp_compiler: g++
-#          - os: macos-latest
-#            c_compiler: clang
-#            cpp_compiler: clang++
+          - os: macos-latest
+            c_compiler: gcc
+            cpp_compiler: g++
+          - os: macos-latest
+            c_compiler: clang
+            cpp_compiler: clang++
 
         exclude:
           - os: ubuntu-latest
             compiler: cl
 
-#          - os: macos-latest
-#            compiler: cl
+          - os: macos-latest
+            compiler: cl
 
 
     steps:
