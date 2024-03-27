@@ -65,11 +65,11 @@ public:
   bool sleep() const;
   Duration now();
 
-#if defined (TIME_UTILS_WIN)
+#if defined(TIME_UTILS_WIN)
   Duration( const LARGE_INTEGER& time );
   operator LARGE_INTEGER () const;
 
-#elif defined (TIME_UTILS_LIN)
+#elif defined(TIME_UTILS_LIN)
   Duration( const timespec& time );
   operator timespec () const;
 

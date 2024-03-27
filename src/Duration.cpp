@@ -15,7 +15,7 @@ const static int64_t NSEC_IN_SEC = 1'000'000'000;
 Duration
 Now()
 {
-#if defined TIME_UTILS_WIN
+#if defined(TIME_UTILS_WIN)
   LARGE_INTEGER currentTime;
   QueryPerformanceCounter( &currentTime );
 
@@ -50,7 +50,7 @@ bool
 SleepUntil(
   const Duration& timestamp )
 {
-#if defined TIME_UTILS_WIN
+#if defined(TIME_UTILS_WIN)
   while ( TimeUtils::Now() < timestamp )
 //    It's the most accurate solution as we can get
 //    as long as timer resolution is minimum
@@ -74,7 +74,7 @@ SleepUntil(
 void
 TimePeriodInit()
 {
-#if defined TIME_UTILS_WIN
+#if defined(TIME_UTILS_WIN)
   timeBeginPeriod(1);
 #endif
 }
@@ -82,7 +82,7 @@ TimePeriodInit()
 void
 TimePeriodDeinit()
 {
-#if defined TIME_UTILS_WIN
+#if defined(TIME_UTILS_WIN)
   timeEndPeriod(1);
 #endif
 }
@@ -113,7 +113,7 @@ Duration::now()
   return *this = TimeUtils::Now();
 }
 
-#if defined (TIME_UTILS_WIN)
+#if defined(TIME_UTILS_WIN)
 Duration::Duration(
   const LARGE_INTEGER& time )
 {
@@ -135,7 +135,7 @@ Duration::operator LARGE_INTEGER () const
   return value;
 }
 
-#elif defined (TIME_UTILS_LIN)
+#elif defined(TIME_UTILS_LIN)
 Duration::Duration(
   const struct timespec& time )
 {
