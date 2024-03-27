@@ -1,5 +1,9 @@
 #include <TimeUtils/Duration.hpp>
 
+#if defined(TIME_UTILS_MAC)
+  #include <TimeUtils/platform/PosixMachTiming.hpp>
+#endif
+
 #include <cmath>
 
 
@@ -15,7 +19,7 @@ Now()
   LARGE_INTEGER currentTime;
   QueryPerformanceCounter( &currentTime );
 
-#elif defined TIME_UTILS_LIN
+#elif defined(TIME_UTILS_LIN) || defined(TIME_UTILS_MAC)
   timespec currentTime;
   clock_gettime( CLOCK_MONOTONIC, &currentTime );
 
@@ -28,15 +32,17 @@ bool
 Sleep(
   const Duration& duration )
 {
-#if defined TIME_UTILS_WIN
+#if defined(TIME_UTILS_WIN) || defined(TIME_UTILS_MAC)
   const Duration timestamp = TimeUtils::Now() + duration;
   return SleepUntil( timestamp );
 
-#elif defined TIME_UTILS_LIN
+#else
   timespec timeToSleep = duration;
-  clock_nanosleep( CLOCK_MONOTONIC, 0, &timeToSleep, NULL );
 
-  return true;
+  return clock_nanosleep( 
+    CLOCK_MONOTONIC, 0, 
+    &timeToSleep, NULL ) == 0;
+
 #endif
 }
 
@@ -46,15 +52,23 @@ SleepUntil(
 {
 #if defined TIME_UTILS_WIN
   while ( TimeUtils::Now() < timestamp )
-    ::Sleep(1); // It's the most accurate solution as we can get
+//    It's the most accurate solution as we can get
+//    as long as timer resolution is minimum
+//    (see TimePeriodInit())
+    ::Sleep(1);
 
-#elif defined TIME_UTILS_LIN
+#elif defined(TIME_UTILS_MAC)
+  timespec timeToSleep = duration;
+  return clock_nanosleep_abstime(&timeToSleep) == 0;
+
+#else
   timespec timeToSleep = timestamp;
-  clock_nanosleep( CLOCK_MONOTONIC, TIMER_ABSTIME, &timeToSleep, NULL );
+
+  return clock_nanosleep(
+    CLOCK_MONOTONIC, TIMER_ABSTIME, 
+    &timeToSleep, NULL ) == 0;
 
 #endif
-
-  return true;
 }
 
 void

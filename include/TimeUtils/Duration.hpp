@@ -18,8 +18,15 @@
 #elif defined(__linux__) || defined(__APPLE__) || defined(__MACH__)
   #include <time.h>
 
-  #if !defined(__linux__) && !defined(CLOCK_MONOTONIC)
+  #if !defined(__linux__) && (!defined(CLOCK_MONOTONIC) || __MAC_OS_X_VERSION_MIN_REQUIRED < 101200)
     static_assert(false, "TimeUtils is not compatible with macOS releases older than Sierra 10.12");
+
+  #elif defined(__APPLE__)
+
+    #ifndef TIME_UTILS_MAC
+      #define TIME_UTILS_MAC
+    #endif
+
   #endif
 
   #ifndef TIME_UTILS_LIN
