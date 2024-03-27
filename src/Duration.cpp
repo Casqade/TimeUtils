@@ -69,6 +69,8 @@ SleepUntil(
     &timeToSleep, NULL ) == 0;
 
 #endif
+
+  return true;
 }
 
 void
