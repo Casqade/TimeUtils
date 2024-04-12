@@ -1,6 +1,10 @@
 # TimeUtils
 
-[![Build status](https://github.com/casqade/TimeUtils/actions/workflows/cmake-multi-platform.yml/badge.svg)](https://github.com/casqade/TimeUtils/actions)
+[![Windows (MSVC)](https://github.com/Casqade/TimeUtils/actions/workflows/windows-build-msvc.yml/badge.svg)](https://github.com/Casqade/TimeUtils/actions/workflows/windows-build-msvc.yml)
+[![Windows (MSYS2)](https://github.com/Casqade/TimeUtils/actions/workflows/windows-build-msys2.yml/badge.svg)](https://github.com/Casqade/TimeUtils/actions/workflows/windows-build-msys2.yml)
+[![Ubuntu](https://github.com/Casqade/TimeUtils/actions/workflows/ubuntu-build.yml/badge.svg)](https://github.com/Casqade/TimeUtils/actions/workflows/ubuntu-build.yml)
+[![macOS](https://github.com/Casqade/TimeUtils/actions/workflows/macos-build.yml/badge.svg)](https://github.com/Casqade/TimeUtils/actions/workflows/macos-build.yml)
+[![GitHub Releases](https://img.shields.io/github/release/casqade/TimeUtils.svg)](https://github.com/casqade/TimeUtils/releases/latest)
 
 Small timespec-like wrapper around system APIs for time-related stuff. 
 
