@@ -33,6 +33,13 @@
     #define TIME_UTILS_LIN
   #endif
 
+#elif defined(__EMSCRIPTEN__)
+  #include <time.h>
+
+  #ifndef TIME_UTILS_LIN
+    #define TIME_UTILS_LIN
+  #endif
+
 #else
   static_assert(false, "TimeUtils is not compatible with your systen");
 
