@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.8)
+cmake_minimum_required(VERSION 3.8...3.10)
 
 set(TARGET TimeUtils)
 set(${TARGET}_VERSION 1.0.0)
